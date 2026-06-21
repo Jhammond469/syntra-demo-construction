@@ -1,0 +1,828 @@
+<!--
+==============================================
+  PLACEHOLDER CHECKLIST — REPLACE BEFORE LAUNCH
+==============================================
+  [ ] [COMPANY NAME]    — title, nav, hero, footer, meta
+  [ ] [PHONE NUMBER]    — topbar, nav CTA, hero, contact, footer
+  [ ] [EMAIL ADDRESS]   — contact section, footer
+  [ ] [SUBURB]          — hero badge, meta description
+  [ ] [SERVICE AREAS]   — hero, why-us, footer
+  [ ] [QBCC NUMBER]     — topbar, hero, footer
+  [ ] [INSTAGRAM URL]   — topbar, footer
+  [ ] [TAGLINE LINE 1]  — hero headline (e.g. "Quality Carpentry.")
+  [ ] [TAGLINE LINE 2]  — hero headline (e.g. "Built Right.")
+  [ ] [TRADE]           — hero sub, services heading, about copy
+  [ ] [SERVICE 1–5]     — service cards (e.g. Decks, Fencing…)
+  [ ] Logo file         — nav and footer logo placeholder
+  [ ] Hero image        — hero-photo background-image
+  [ ] Service card photos (5) — service-card-bg background-image
+  [ ] Gallery photos (8)     — gallery-item img src
+  [ ] Statement photo   — statement-bg background-image
+==============================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[COMPANY NAME] | Licensed [TRADE] [SUBURB] &amp; [SERVICE AREAS]</title>
+  <meta name="description" content="[COMPANY NAME] — licensed [TRADE] servicing [SERVICE AREAS]. [SERVICE 1], [SERVICE 2], [SERVICE 3] &amp; more. QBCC [QBCC NUMBER]. Free quotes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* ── BRAND COLOURS — update these two to match client ── */
+      --c-primary:          #0D0D0D;
+      --c-primary-dark:     #000000;
+      --c-secondary:        #C4903A;
+      --c-secondary-dark:   #A87830;
+      --c-accent:           #E8B04A;
+
+      --c-ink:              #111111;
+      --c-body:             #555555;
+      --c-muted:            #888888;
+      --c-star:             #FFD000;
+      --c-canvas:           #ffffff;
+      --c-surface-soft:     #F5F5F5;
+      --c-dark:             #111111;
+      --c-dark-deep:        #000000;
+      --c-hairline:         #e8e8e8;
+      --c-hairline-strong:  #d0d0d0;
+      --ff-display: 'Montserrat', Helvetica, Arial, sans-serif;
+      --ff-body:    'Open Sans', Arial, sans-serif;
+      --fs-hero:      clamp(42px, 6.5vw, 78px);
+      --fs-h2:        clamp(24px, 3vw, 32px);
+      --fs-h4:        18px;
+      --fs-h5:        16px;
+      --fs-body:      15px;
+      --fs-body-lg:   17px;
+      --space-xl:      64px;
+      --space-section: 88px;
+      --maxw:      1100px;
+      --page-pad:  clamp(20px, 5vw, 48px);
+      --nav-h:     76px;
+      --r-btn:  3px;
+      --r-card: 5px;
+      --r-full: 9999px;
+      --shadow-card: 0 2px 14px rgba(0,0,0,0.10);
+      --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+      --dur-fast: 150ms;
+      --dur-base: 260ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); font-size: var(--fs-body); color: var(--c-body); background: var(--c-canvas); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--page-pad); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--ff-display); font-weight: 700; font-size: 13px;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 14px 28px; border-radius: var(--r-btn);
+      border: 2px solid transparent; cursor: pointer;
+      transition: background var(--dur-base) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+    }
+    .btn-primary { background: var(--c-secondary); color: #fff; border-color: var(--c-secondary); }
+    .btn-primary:hover { background: var(--c-secondary-dark); border-color: var(--c-secondary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.65); }
+    .btn-outline:hover { background: rgba(255,255,255,0.10); border-color: #fff; }
+    .btn-dark { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+    .btn-dark:hover { background: #333; transform: translateY(-1px); }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--c-secondary); color: #fff;
+      font-size: 12px; font-family: var(--ff-display); font-weight: 700;
+      letter-spacing: 0.5px; padding: 9px 0;
+    }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .topbar a { color: inherit; transition: opacity var(--dur-fast); }
+    .topbar a:hover { opacity: 0.8; }
+    .topbar-right { display: flex; gap: 24px; }
+    @media (max-width: 768px) { .topbar-left { display: none; } }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--c-primary); height: var(--nav-h);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.50);
+      animation: navDrop 0.5s var(--ease-out) both;
+    }
+    @keyframes navDrop { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    /* REPLACE: logo — swap the text logo below for:
+       <img src="logo-white.png" alt="[COMPANY NAME]" height="42" /> */
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-top { font-family: var(--ff-display); font-weight: 900; font-size: 22px; color: #fff; letter-spacing: -1.5px; line-height: 0.95; }
+    .nav-logo-btm { font-family: var(--ff-display); font-weight: 900; font-size: 22px; color: #fff; letter-spacing: -1.5px; line-height: 0.95; }
+    .nav-logo-sub { font-family: var(--ff-display); font-weight: 600; font-size: 7.5px; color: rgba(255,255,255,0.50); letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: var(--ff-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.75);
+      transition: color var(--dur-fast);
+    }
+    .nav-links a:hover { color: var(--c-secondary); }
+    .nav-cta-btn { padding: 10px 22px; font-size: 12px; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all var(--dur-base); }
+    .nav-mobile { display: none; }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-btn { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile {
+        position: fixed; inset: 0; top: var(--nav-h);
+        background: #000; padding: 32px var(--page-pad);
+        flex-direction: column; gap: 8px; z-index: 99;
+      }
+      .nav-mobile.is-open { display: flex; }
+      .nav-mobile a {
+        font-family: var(--ff-display); font-weight: 700; font-size: 18px;
+        color: #fff; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-mobile .btn { margin-top: 16px; justify-content: center; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 94vh;
+      display: flex; align-items: center;
+      background: var(--c-primary); overflow: hidden;
+    }
+    .hero-photo {
+      position: absolute; inset: 0;
+      background: url('mordern-home.jpeg') center/cover no-repeat;
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.72) 55%, rgba(0,0,0,0.30) 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; padding: var(--space-xl) 0; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--c-secondary); font-family: var(--ff-display); font-weight: 700;
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s var(--ease-out) 0.1s both;
+    }
+    .hero-headline {
+      font-family: var(--ff-display); font-weight: 900;
+      font-size: var(--fs-hero); line-height: 1.0;
+      color: #fff; letter-spacing: -2px;
+      animation: fadeUp 0.7s var(--ease-out) 0.2s both;
+    }
+    .hero-headline em { font-style: normal; color: var(--c-secondary); }
+    .hero-sub {
+      font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.75);
+      margin-top: 24px; animation: fadeUp 0.7s var(--ease-out) 0.32s both;
+      max-width: 520px;
+    }
+    .hero-services {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+      animation: fadeUp 0.7s var(--ease-out) 0.38s both;
+    }
+    .hero-service-tag {
+      font-family: var(--ff-display); font-weight: 600; font-size: 11px;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.60); border: 1px solid rgba(255,255,255,0.18);
+      padding: 5px 12px; border-radius: var(--r-full);
+    }
+    .hero-cta-block {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px;
+      animation: fadeUp 0.7s var(--ease-out) 0.44s both;
+    }
+    .hero-qbcc {
+      display: flex; align-items: center; gap: 10px; margin-top: 28px;
+      color: rgba(255,255,255,0.50); font-size: 13px; font-family: var(--ff-display); font-weight: 600;
+      animation: fadeUp 0.7s var(--ease-out) 0.52s both;
+    }
+    .hero-qbcc svg { color: var(--c-secondary); min-width: 18px; }
+
+    /* ── STATS BAR ── */
+    .stats { background: #000; border-bottom: 3px solid var(--c-secondary); }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat { padding: 28px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+    .stat-num { font-family: var(--ff-display); font-weight: 900; font-size: 36px; color: #fff; line-height: 1; display: block; }
+    .stat-suffix { color: var(--c-secondary); }
+    .stat-label { font-family: var(--ff-display); font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 6px; display: block; }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── SERVICES ── */
+    .services { padding: var(--space-section) 0; background: var(--c-canvas); }
+    .section-label {
+      font-family: var(--ff-display); font-weight: 700; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--c-secondary);
+      margin-bottom: 12px; display: block;
+    }
+    .section-title {
+      font-family: var(--ff-display); font-weight: 900; font-size: var(--fs-h2);
+      color: var(--c-ink); line-height: 1.15; max-width: 560px; margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .section-sub { font-size: var(--fs-body-lg); color: var(--c-body); max-width: 520px; line-height: 1.65; margin-bottom: 48px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+    .service-card {
+      position: relative; overflow: hidden; border-radius: var(--r-card);
+      min-height: 310px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .service-card-bg {
+      position: absolute; inset: 0;
+      background-color: var(--c-primary); background-size: cover;
+      background-position: center; background-repeat: no-repeat;
+      transition: transform 600ms var(--ease-out);
+    }
+    .service-card:hover .service-card-bg { transform: scale(1.04); }
+    .service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.40) 55%, rgba(0,0,0,0.08) 100%);
+    }
+    .service-card-body { position: relative; z-index: 2; padding: 24px 28px; }
+    .service-number { font-family: var(--ff-display); font-weight: 900; font-size: 11px; color: var(--c-secondary); letter-spacing: 1.5px; margin-bottom: 10px; display: block; }
+    .service-card h3 { font-family: var(--ff-display); font-weight: 800; font-size: var(--fs-h4); color: #fff; margin-bottom: 8px; }
+    .service-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.80); }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 481px) and (max-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── STATEMENT ── */
+    .statement-photo { position: relative; height: 60vh; min-height: 380px; overflow: hidden; }
+    .statement-bg {
+      position: absolute; inset: 0;
+      /* REPLACE: statement photo — dramatic wide shot of finished project or active site */
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      transition: transform 800ms var(--ease-out);
+    }
+    .statement-photo:hover .statement-bg { transform: scale(1.02); }
+    .statement-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.52); }
+    .statement-content { position: relative; z-index: 2; height: 100%; display: flex; align-items: center; }
+    .statement-text {
+      font-family: var(--ff-display); font-size: clamp(30px, 4.5vw, 58px);
+      font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -1.5px;
+    }
+    .statement-text em { font-style: normal; color: var(--c-secondary); }
+
+    /* ── GALLERY ── */
+    .gallery { padding: var(--space-section) 0; background: var(--c-surface-soft); }
+    .gallery-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; flex-wrap: wrap; gap: 20px; }
+    .gallery-grid { display: grid; gap: 8px; grid-template-columns: repeat(4, 1fr); }
+    .gallery-item { overflow: hidden; border-radius: var(--r-card); position: relative; aspect-ratio: 1; background: #ccc; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+    .gallery-item:nth-child(6) { grid-column: span 2; aspect-ratio: 2/1; }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item { aspect-ratio: 1 !important; grid-column: span 1 !important; grid-row: span 1 !important; }
+    }
+
+    /* ── WHY US ── */
+    .why-us { padding: var(--space-section) 0; background: var(--c-primary); }
+    .why-us .section-label { color: var(--c-secondary); }
+    .why-us .section-title { color: #fff; max-width: none; }
+    .why-us .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 56px; }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--r-card); overflow: hidden;
+    }
+    .why-item { background: rgba(255,255,255,0.03); padding: 36px 24px; text-align: center; transition: background var(--dur-base); }
+    .why-item:hover { background: rgba(255,255,255,0.07); }
+    .why-icon { width: 54px; height: 54px; border-radius: var(--r-full); background: var(--c-secondary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .why-item h4 { font-family: var(--ff-display); font-weight: 700; font-size: var(--fs-h5); color: #fff; margin-bottom: 8px; }
+    .why-item p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.60); }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: var(--space-section) 0; background: var(--c-canvas); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card {
+      background: var(--c-canvas); border: 1px solid var(--c-hairline);
+      border-radius: var(--r-card); padding: 28px;
+      border-top: 3px solid var(--c-secondary);
+      box-shadow: var(--shadow-card);
+    }
+    .review-stars { color: var(--c-star); font-size: 16px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: var(--fs-body-lg); line-height: 1.7; color: var(--c-body); margin-bottom: 20px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 44px; height: 44px; border-radius: var(--r-full); background: var(--c-primary); color: #fff; font-family: var(--ff-display); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+    .reviewer-name { font-family: var(--ff-display); font-weight: 700; font-size: 14px; color: var(--c-ink); }
+    .reviewer-loc { font-size: 13px; color: var(--c-muted); }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA BANNER ── */
+    .cta-banner { padding: var(--space-xl) 0; background: var(--c-secondary); position: relative; overflow: hidden; }
+    .cta-banner::before { content: ''; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: var(--r-full); background: rgba(0,0,0,0.10); }
+    .cta-inner { text-align: center; position: relative; z-index: 1; }
+    .cta-inner h2 { font-family: var(--ff-display); font-weight: 900; font-size: clamp(26px, 4vw, 42px); color: #fff; letter-spacing: -1px; margin-bottom: 10px; }
+    .cta-inner p { font-size: 18px; color: rgba(255,255,255,0.88); margin-bottom: 36px; }
+    .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ── CONTACT ── */
+    .contact { padding: var(--space-section) 0; background: var(--c-canvas); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .contact-info h2 { font-family: var(--ff-display); font-weight: 900; font-size: var(--fs-h2); color: var(--c-ink); margin-bottom: 16px; letter-spacing: -0.5px; }
+    .contact-info p { font-size: var(--fs-body-lg); line-height: 1.65; color: var(--c-body); margin-bottom: 32px; }
+    .contact-detail { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .contact-detail-icon { width: 44px; height: 44px; min-width: 44px; border-radius: var(--r-card); background: #F5F5F5; color: var(--c-primary); display: flex; align-items: center; justify-content: center; }
+    .contact-detail strong { font-family: var(--ff-display); font-weight: 700; font-size: 14px; color: var(--c-ink); display: block; margin-bottom: 2px; }
+    .contact-detail span { font-size: 14px; color: var(--c-body); }
+    .contact-form-wrap { background: var(--c-surface-soft); border-radius: 6px; padding: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-family: var(--ff-display); font-weight: 600; font-size: 13px; color: var(--c-ink); }
+    .form-group input, .form-group textarea, .form-group select {
+      font-family: var(--ff-body); font-size: 15px; color: var(--c-ink);
+      background: var(--c-canvas); border: 1px solid var(--c-hairline-strong);
+      border-radius: var(--r-btn); padding: 12px 16px;
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+      outline: none; width: 100%;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--c-secondary); box-shadow: 0 0 0 3px rgba(196,144,58,0.15); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-success { display: none; padding: 16px; background: #d1fae5; border-radius: var(--r-btn); color: #065f46; font-family: var(--ff-display); font-weight: 600; font-size: 14px; margin-top: 12px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ── */
+    .footer { background: #0D0D0D; color: rgba(255,255,255,0.55); padding: 56px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    /* REPLACE: footer logo — swap text logo for <img src="logo-white.png" … /> */
+    .footer-logo { display: flex; flex-direction: column; line-height: 1; margin-bottom: 14px; }
+    .footer-logo-top { font-family: var(--ff-display); font-weight: 900; font-size: 24px; color: #fff; letter-spacing: -1.5px; line-height: 0.95; }
+    .footer-logo-btm { font-family: var(--ff-display); font-weight: 900; font-size: 24px; color: #fff; letter-spacing: -1.5px; line-height: 0.95; }
+    .footer-logo-sub { font-family: var(--ff-display); font-weight: 600; font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-family: var(--ff-display); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color var(--dur-fast); }
+    .footer-col ul a:hover { color: var(--c-secondary); }
+    .footer-bottom { background: #000; padding: 18px 0; font-size: 13px; }
+    .footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.06s; } .d2 { transition-delay: 0.13s; }
+    .d3 { transition-delay: 0.20s; } .d4 { transition-delay: 0.27s; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="inner topbar-inner">
+      <span class="topbar-left">QBCC Lic. [QBCC NUMBER] &nbsp;·&nbsp; Licensed [TRADE] &nbsp;·&nbsp; [SUBURB], QLD</span>
+      <div class="topbar-right">
+        <a href="[INSTAGRAM URL]" target="_blank" rel="noopener">@[INSTAGRAM HANDLE]</a>
+        <a href="tel:[PHONE NUMBER]"><strong>[PHONE NUMBER]</strong></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav" id="top">
+    <div class="inner nav-inner">
+      <!-- REPLACE: logo file -->
+      <a href="#top" class="nav-logo">
+        <span class="nav-logo-top">[COMPANY</span>
+        <span class="nav-logo-btm">NAME]</span>
+        <span class="nav-logo-sub">[TRADE]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Our Work</a></li>
+        <li><a href="#why-us">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:[PHONE NUMBER]" class="btn btn-primary nav-cta-btn">Free Quote</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#why-us">About</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:[PHONE NUMBER]" class="btn btn-primary">[PHONE NUMBER]</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- REPLACE: hero-photo background-image in CSS above -->
+    <div class="hero-photo" id="heroPhoto"></div>
+    <div class="hero-overlay"></div>
+    <div class="inner">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          QBCC Licensed &nbsp;·&nbsp; [SUBURB], QLD
+        </div>
+        <h1 class="hero-headline">
+          [TAGLINE LINE 1]<br />[TAGLINE LINE 2]<br /><em>[TAGLINE LINE 3]</em>
+        </h1>
+        <p class="hero-sub">
+          Licensed [TRADE] for [SERVICE AREAS] homes and businesses.
+          [SERVICE 1], [SERVICE 2], [SERVICE 3] and more — built properly, on time.
+        </p>
+        <div class="hero-services">
+          <span class="hero-service-tag">[SERVICE 1]</span>
+          <span class="hero-service-tag">[SERVICE 2]</span>
+          <span class="hero-service-tag">[SERVICE 3]</span>
+          <span class="hero-service-tag">[SERVICE 4]</span>
+          <span class="hero-service-tag">[SERVICE 5]</span>
+        </div>
+        <div class="hero-cta-block">
+          <a href="tel:[PHONE NUMBER]" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call for Free Quote
+          </a>
+          <a href="#contact" class="btn btn-outline">Get a Quote Online</a>
+        </div>
+        <div class="hero-qbcc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>QBCC Licence [QBCC NUMBER] &nbsp;·&nbsp; Fully Insured &nbsp;·&nbsp; Free Quotes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats">
+    <div class="inner">
+      <div class="stats-grid">
+        <div class="stat fade-up d1">
+          <span class="stat-num" data-target="200">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat fade-up d2">
+          <span class="stat-num" data-target="10">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat fade-up d3">
+          <span class="stat-num" data-target="5">0</span>
+          <span class="stat-label">Trade Specialties</span>
+        </div>
+        <div class="stat fade-up d4">
+          <span class="stat-num" data-target="100">0</span><span class="stat-suffix">%</span>
+          <span class="stat-label">Licensed &amp; Insured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="inner">
+      <span class="section-label fade-up">What We Do</span>
+      <h2 class="section-title fade-up d1">[TRADE] Services Across [SERVICE AREAS]</h2>
+      <p class="section-sub fade-up d2">From small repairs to full builds — every job done to a standard we're proud to put our name on.</p>
+      <div class="services-grid">
+
+        <div class="service-card fade-up d1">
+          <!-- REPLACE: service 1 photo -->
+          <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-body">
+            <span class="service-number">01</span>
+            <h3>[SERVICE 1]</h3>
+            <p>Description of what this service involves and why clients love it. Keep it short, confident, and specific to the trade.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <!-- REPLACE: service 2 photo -->
+          <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-body">
+            <span class="service-number">02</span>
+            <h3>[SERVICE 2]</h3>
+            <p>Description of this service. What sets this tradesman apart — quality materials, clean work, on time delivery.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <!-- REPLACE: service 3 photo -->
+          <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-body">
+            <span class="service-number">03</span>
+            <h3>[SERVICE 3]</h3>
+            <p>Description of this service. What makes it different, what clients get, why it matters for their home or business.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d1">
+          <!-- REPLACE: service 4 photo -->
+          <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-body">
+            <span class="service-number">04</span>
+            <h3>[SERVICE 4]</h3>
+            <p>Description of this service. Two to three punchy sentences that tell the client exactly what to expect.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <!-- REPLACE: service 5 photo -->
+          <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1572204097183-e1ab140342ed?auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-body">
+            <span class="service-number">05</span>
+            <h3>[SERVICE 5]</h3>
+            <p>Description of this service. Bring us your project — we'll assess it, quote it, and build it exactly as agreed.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT PHOTO -->
+  <section class="statement-photo">
+    <!-- REPLACE: statement-bg image in CSS above -->
+    <div class="statement-bg"></div>
+    <div class="statement-overlay"></div>
+    <div class="inner statement-content">
+      <p class="statement-text">Built by hand.<br>Built to last.<br><em>Built right.</em></p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="inner">
+      <div class="gallery-intro">
+        <div>
+          <span class="section-label fade-up">Our Work</span>
+          <h2 class="section-title fade-up d1" style="margin-bottom:0;">Recent Projects</h2>
+        </div>
+        <a href="#contact" class="btn btn-dark fade-up d2">Get a Free Quote</a>
+      </div>
+      <div class="gallery-grid">
+        <!-- REPLACE: all gallery images with real project photos -->
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1572204097183-e1ab140342ed?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=600&q=80" alt="Project photo" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why-us">
+    <div class="inner">
+      <span class="section-label fade-up">Why Choose Us</span>
+      <h2 class="section-title fade-up d1">[SERVICE AREAS]'s [TRADE] That Gets It Done</h2>
+      <p class="section-sub fade-up d2">Licensed, insured, and serious about quality. We don't cut corners — we build them.</p>
+      <div class="why-grid">
+        <div class="why-item fade-up d1">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>QBCC Licensed</h4>
+          <p>Fully licensed and insured. Licence [QBCC NUMBER]. All work meets Queensland building standards.</p>
+        </div>
+        <div class="why-item fade-up d2">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Quality Materials</h4>
+          <p>We only use materials we'd put on our own home. No cheap shortcuts that let clients down 12 months later.</p>
+        </div>
+        <div class="why-item fade-up d3">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>On Time</h4>
+          <p>We show up when we say we will. Your project won't sit half-finished while we work another job.</p>
+        </div>
+        <div class="why-item fade-up d4">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4>Fair Pricing</h4>
+          <p>Detailed written quotes before we start. The price you're quoted is the price you pay — no variations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="inner">
+      <div style="text-align:center;margin-bottom:48px;">
+        <span class="section-label fade-up">Reviews</span>
+        <h2 class="section-title fade-up d1" style="max-width:none;margin:0 auto;">What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="review-card fade-up d1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"[Testimonial 1 — write a genuine-sounding review specific to the trade and the type of job done. Keep it 2-3 sentences, conversational, authentic.]"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">M</div>
+            <div><div class="reviewer-name">Mark T.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+          </div>
+        </div>
+        <div class="review-card fade-up d2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"[Testimonial 2 — different type of job, different client. Focus on professionalism, communication, and quality of finish.]"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">S</div>
+            <div><div class="reviewer-name">Sarah P.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+          </div>
+        </div>
+        <div class="review-card fade-up d3">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"[Testimonial 3 — price/value focus. Client who got multiple quotes and chose this tradie. Ends with a strong recommendation.]"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">J</div>
+            <div><div class="reviewer-name">James R.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="inner cta-inner">
+      <h2>Ready to Build Something?</h2>
+      <p>Tell us about your project and we'll get back to you with a free quote within 24 hours.</p>
+      <div class="cta-buttons">
+        <a href="tel:[PHONE NUMBER]" class="btn btn-dark">Call [PHONE NUMBER]</a>
+        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label fade-up">Get In Touch</span>
+          <h2 class="fade-up d1">Request Your Free Quote</h2>
+          <p class="fade-up d2">We'll get back to you within 24 hours. For urgent work, call us directly.</p>
+          <div class="contact-detail fade-up d2">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div><strong>Phone</strong><span>[PHONE NUMBER]</span></div>
+          </div>
+          <div class="contact-detail fade-up d3">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><strong>Email</strong><span>[EMAIL ADDRESS]</span></div>
+          </div>
+          <div class="contact-detail fade-up d4">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><strong>Service Area</strong><span>[SERVICE AREAS], QLD</span></div>
+          </div>
+        </div>
+        <div class="contact-form-wrap fade-up d2">
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" name="first_name" placeholder="John" required /></div>
+              <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" name="last_name" placeholder="Smith" required /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" required /></div>
+              <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="john@email.com" /></div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option value="">Select a service…</option>
+                <option>[SERVICE 1]</option>
+                <option>[SERVICE 2]</option>
+                <option>[SERVICE 3]</option>
+                <option>[SERVICE 4]</option>
+                <option>[SERVICE 5]</option>
+                <option>Not Sure — Need Advice</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="message">Tell Us About Your Project</label><textarea id="message" name="message" placeholder="Describe what you need…" required></textarea></div>
+            <input type="text" name="_hp" style="display:none" tabindex="-1" autocomplete="off" />
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+            <div class="form-success" id="formSuccess">Thanks! We'll be in touch within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <!-- REPLACE: logo file -->
+          <div class="footer-logo">
+            <span class="footer-logo-top">[COMPANY</span>
+            <span class="footer-logo-btm">NAME]</span>
+            <span class="footer-logo-sub">[TRADE]</span>
+          </div>
+          <p>Licensed [TRADE] servicing [SERVICE AREAS]. [SERVICE 1], [SERVICE 2], [SERVICE 3] &amp; more. QBCC [QBCC NUMBER].</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">[SERVICE 1]</a></li>
+            <li><a href="#services">[SERVICE 2]</a></li>
+            <li><a href="#services">[SERVICE 3]</a></li>
+            <li><a href="#services">[SERVICE 4]</a></li>
+            <li><a href="#services">[SERVICE 5]</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></li>
+            <li><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></li>
+            <li><a href="[INSTAGRAM URL]" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#contact">Free Quote</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="inner footer-bottom-inner">
+        <span>© 2026 [COMPANY NAME]. All rights reserved. QBCC [QBCC NUMBER].</span>
+        <span>Website by <a href="https://syntrasoftware.com.au" style="color:var(--c-secondary);">Syntra Software</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function () { mobileMenu.classList.toggle('is-open'); });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { mobileMenu.classList.remove('is-open'); });
+    });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
+    var statObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        if (!target) return;
+        var startTime = null, duration = 1600;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var p = Math.min((ts - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * target);
+          if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        statObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-num[data-target]').forEach(function (el) { statObs.observe(el); });
+    var heroPhoto = document.getElementById('heroPhoto');
+    if (heroPhoto) {
+      window.addEventListener('scroll', function () {
+        heroPhoto.style.transform = 'translateY(' + (window.scrollY * 0.28) + 'px)';
+      }, { passive: true });
+    }
+    var form = document.getElementById('contactForm');
+    var successMsg = document.getElementById('formSuccess');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      successMsg.style.display = 'block';
+      form.reset();
+    });
+  })();
+  </script>
+
+</body>
+</html>
