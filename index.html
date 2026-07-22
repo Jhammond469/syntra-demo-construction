@@ -207,9 +207,10 @@
     /* ── STATS BAR ── */
     .stats { background: #000; border-bottom: 3px solid var(--c-secondary); }
     .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border-left: 1px solid rgba(255,255,255,0.08);
     }
+    .stats-grid.no-reviews { grid-template-columns: repeat(2, 1fr); }
     .stat { padding: 28px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
     .stat-num { font-family: var(--ff-display); font-weight: 900; font-size: 36px; color: #fff; line-height: 1; display: block; }
     .stat-suffix { color: var(--c-secondary); }
@@ -392,9 +393,8 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="inner topbar-inner">
-      <span class="topbar-left">QBCC Lic. [QBCC NUMBER] &nbsp;·&nbsp; Licensed [TRADE] &nbsp;·&nbsp; [SUBURB], QLD</span>
+      <span class="topbar-left">Licensed [TRADE] &nbsp;·&nbsp; [SUBURB], [STATE]</span>
       <div class="topbar-right">
-        <a href="[INSTAGRAM URL]" target="_blank" rel="noopener">@[INSTAGRAM HANDLE]</a>
         <a href="tel:[PHONE NUMBER]"><strong>[PHONE NUMBER]</strong></a>
       </div>
     </div>
@@ -438,7 +438,7 @@
       <div class="hero-inner">
         <div class="hero-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          QBCC Licensed &nbsp;·&nbsp; [SUBURB], QLD
+          Licensed &amp; Insured &nbsp;·&nbsp; [SUBURB], [STATE]
         </div>
         <h1 class="hero-headline">
           [TAGLINE LINE 1]<br />[TAGLINE LINE 2]<br /><em>[TAGLINE LINE 3]</em>
@@ -463,7 +463,7 @@
         </div>
         <div class="hero-qbcc">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>QBCC Licence [QBCC NUMBER] &nbsp;·&nbsp; Fully Insured &nbsp;·&nbsp; Free Quotes</span>
+          <span>Fully Licensed &amp; Insured &nbsp;·&nbsp; Free Quotes</span>
         </div>
       </div>
     </div>
@@ -474,12 +474,8 @@
     <div class="inner">
       <div class="stats-grid">
         <div class="stat fade-up d1">
-          <span class="stat-num" data-target="200">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Projects Completed</span>
-        </div>
-        <div class="stat fade-up d2">
-          <span class="stat-num" data-target="10">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Years Experience</span>
+          <span class="stat-num" data-target="[REVIEWS]">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Google Reviews</span>
         </div>
         <div class="stat fade-up d3">
           <span class="stat-num" data-target="5">0</span>
@@ -508,7 +504,7 @@
           <div class="service-card-body">
             <span class="service-number">01</span>
             <h3>[SERVICE 1]</h3>
-            <p>Description of what this service involves and why clients love it. Keep it short, confident, and specific to the trade.</p>
+            <p data-svc-desc="1">Description of what this service involves and why clients love it. Keep it short, confident, and specific to the trade.</p>
           </div>
         </div>
 
@@ -519,7 +515,7 @@
           <div class="service-card-body">
             <span class="service-number">02</span>
             <h3>[SERVICE 2]</h3>
-            <p>Description of this service. What sets this tradesman apart — quality materials, clean work, on time delivery.</p>
+            <p data-svc-desc="2">Description of this service. What sets this tradesman apart — quality materials, clean work, on time delivery.</p>
           </div>
         </div>
 
@@ -530,7 +526,7 @@
           <div class="service-card-body">
             <span class="service-number">03</span>
             <h3>[SERVICE 3]</h3>
-            <p>Description of this service. What makes it different, what clients get, why it matters for their home or business.</p>
+            <p data-svc-desc="3">Description of this service. What makes it different, what clients get, why it matters for their home or business.</p>
           </div>
         </div>
 
@@ -541,7 +537,7 @@
           <div class="service-card-body">
             <span class="service-number">04</span>
             <h3>[SERVICE 4]</h3>
-            <p>Description of this service. Two to three punchy sentences that tell the client exactly what to expect.</p>
+            <p data-svc-desc="4">Description of this service. Two to three punchy sentences that tell the client exactly what to expect.</p>
           </div>
         </div>
 
@@ -552,7 +548,7 @@
           <div class="service-card-body">
             <span class="service-number">05</span>
             <h3>[SERVICE 5]</h3>
-            <p>Description of this service. Bring us your project — we'll assess it, quote it, and build it exactly as agreed.</p>
+            <p data-svc-desc="5">Description of this service. Bring us your project — we'll assess it, quote it, and build it exactly as agreed.</p>
           </div>
         </div>
 
@@ -605,8 +601,8 @@
           <div class="why-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h4>QBCC Licensed</h4>
-          <p>Fully licensed and insured. Licence [QBCC NUMBER]. All work meets Queensland building standards.</p>
+          <h4>Fully Licensed</h4>
+          <p>Fully licensed and insured. All work meets Australian building standards.</p>
         </div>
         <div class="why-item fade-up d2">
           <div class="why-icon">
@@ -643,26 +639,26 @@
       <div class="testimonials-grid">
         <div class="review-card fade-up d1">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"[Testimonial 1 — write a genuine-sounding review specific to the trade and the type of job done. Keep it 2-3 sentences, conversational, authentic.]"</p>
+          <p class="review-text">"Turned up on time, quoted fairly, and got the job done without any of the delays we'd had with other tradies before. Communication was great the whole way through."</p>
           <div class="reviewer">
             <div class="reviewer-avatar">M</div>
-            <div><div class="reviewer-name">Mark T.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+            <div><div class="reviewer-name">Mark T.</div><div class="reviewer-loc">[SUBURB], [STATE]</div></div>
           </div>
         </div>
         <div class="review-card fade-up d2">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"[Testimonial 2 — different type of job, different client. Focus on professionalism, communication, and quality of finish.]"</p>
+          <p class="review-text">"Really impressed with the attention to detail and the clean finish. They explained everything clearly before starting and there were no surprises on the final bill."</p>
           <div class="reviewer">
             <div class="reviewer-avatar">S</div>
-            <div><div class="reviewer-name">Sarah P.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+            <div><div class="reviewer-name">Sarah P.</div><div class="reviewer-loc">[SUBURB], [STATE]</div></div>
           </div>
         </div>
         <div class="review-card fade-up d3">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"[Testimonial 3 — price/value focus. Client who got multiple quotes and chose this tradie. Ends with a strong recommendation.]"</p>
+          <p class="review-text">"Got a few quotes before choosing these guys — glad we did. Fair price, quality work, and they stood by what they promised. Would use again without hesitation."</p>
           <div class="reviewer">
             <div class="reviewer-avatar">J</div>
-            <div><div class="reviewer-name">James R.</div><div class="reviewer-loc">[SUBURB], QLD</div></div>
+            <div><div class="reviewer-name">James R.</div><div class="reviewer-loc">[SUBURB], [STATE]</div></div>
           </div>
         </div>
       </div>
@@ -695,17 +691,11 @@
             </div>
             <div><strong>Phone</strong><span>[PHONE NUMBER]</span></div>
           </div>
-          <div class="contact-detail fade-up d3">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div><strong>Email</strong><span>[EMAIL ADDRESS]</span></div>
-          </div>
           <div class="contact-detail fade-up d4">
             <div class="contact-detail-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <div><strong>Service Area</strong><span>[SERVICE AREAS], QLD</span></div>
+            <div><strong>Service Area</strong><span>[SERVICE AREAS], [STATE]</span></div>
           </div>
         </div>
         <div class="contact-form-wrap fade-up d2">
@@ -751,7 +741,7 @@
             <span class="footer-logo-btm">NAME]</span>
             <span class="footer-logo-sub">[TRADE]</span>
           </div>
-          <p>Licensed [TRADE] servicing [SERVICE AREAS]. [SERVICE 1], [SERVICE 2], [SERVICE 3] &amp; more. QBCC [QBCC NUMBER].</p>
+          <p>Licensed [TRADE] servicing [SERVICE AREAS]. [SERVICE 1], [SERVICE 2], [SERVICE 3] &amp; more.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
@@ -767,8 +757,6 @@
           <h4>Contact</h4>
           <ul>
             <li><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></li>
-            <li><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></li>
-            <li><a href="[INSTAGRAM URL]" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="#contact">Free Quote</a></li>
           </ul>
         </div>
@@ -776,11 +764,161 @@
     </div>
     <div class="footer-bottom">
       <div class="inner footer-bottom-inner">
-        <span>© 2026 [COMPANY NAME]. All rights reserved. QBCC [QBCC NUMBER].</span>
+        <span>© 2026 [COMPANY NAME]. All rights reserved.</span>
         <span>Website by <a href="https://syntrasoftware.com.au" style="color:var(--c-secondary);">Syntra Software</a></span>
       </div>
     </div>
   </footer>
+
+  <!-- Personalisation — fills in the real lead's business details from URL params
+       (?name=&suburb=&state=&phone=&reviews=&trade=). Runs first, via a TreeWalker
+       over text nodes plus a targeted attribute pass, so it never touches the
+       script below and can't accidentally strip its event listeners. This template
+       covers 5 trades sharing one demo, so trade/tagline/services come from a
+       lookup table keyed on the `trade` param (builder/carpenter/concreter/
+       bricklayer/fencer), unlike plumber/roofer/landscaper which only have one. -->
+  <script>
+  (function () {
+    'use strict';
+
+    var TRADES = {
+      builder: {
+        label: 'Builder',
+        tagline: ['Building It', 'Right,', 'The First Time.'],
+        services: [
+          ['New Builds', 'Custom home builds from the ground up, managed start to finish by our own crew.'],
+          ['Renovations', 'Full or partial renovations that respect your budget and your timeline.'],
+          ['Extensions', "Extra bedrooms, living space, or a second storey — built to match your existing home."],
+          ['Granny Flats', 'Self-contained secondary dwellings, fully compliant and ready to rent or live in.'],
+          ['Project Management', 'One point of contact coordinating every trade on your build, start to finish.']
+        ]
+      },
+      carpenter: {
+        label: 'Carpenter',
+        tagline: ['Carpentry', 'Done', 'Properly.'],
+        services: [
+          ['Custom Carpentry', 'Bespoke joinery and fit-outs built to your exact specifications.'],
+          ['Decks & Pergolas', 'Outdoor living spaces built to last, from design through to final coat.'],
+          ['Renovations', 'Kitchen, bathroom, and structural carpentry for renovations of any size.'],
+          ['Fit-Outs', 'Commercial and residential fit-outs completed on schedule and on budget.'],
+          ['Repairs', "From a single sticking door to major structural repairs, done right the first time."]
+        ]
+      },
+      concreter: {
+        label: 'Concreter',
+        tagline: ['Concrete', 'Done', 'Right.'],
+        services: [
+          ['Driveways', 'Durable, well-finished driveways designed to handle daily traffic for decades.'],
+          ['Concrete Slabs', 'Engineered slabs for sheds, extensions, and new builds, poured to spec.'],
+          ['Exposed Aggregate', 'Decorative exposed aggregate finishes for paths, patios, and pool surrounds.'],
+          ['Paths & Paving', 'Clean, level paths and paving that tie your outdoor spaces together.'],
+          ['Retaining Walls', 'Concrete retaining walls built to hold, with proper drainage and compliance.']
+        ]
+      },
+      bricklayer: {
+        label: 'Bricklayer',
+        tagline: ['Brickwork', 'Built', 'To Last.'],
+        services: [
+          ['Brickwork', 'New brickwork for homes and extensions, laid straight and finished clean.'],
+          ['Blockwork', 'Structural blockwork for retaining, boundary, and load-bearing walls.'],
+          ['Repointing', 'Restoring old or damaged mortar joints to protect and refresh your brickwork.'],
+          ['Retaining Walls', 'Brick and block retaining walls built to hold, with proper engineering.'],
+          ['Extensions', "Brick extensions matched to your existing home's colour and bond pattern."]
+        ]
+      },
+      fencer: {
+        label: 'Fencer',
+        tagline: ['Fencing', 'Done', 'Right.'],
+        services: [
+          ['Fencing', 'Colorbond, timber, and pool fencing installed to council standard.'],
+          ['Gates', 'Manual and automated gates built to match your fencing and your home.'],
+          ['Retaining Walls', 'Timber and sleeper retaining walls built to hold and drain properly.'],
+          ['Pool Fencing', 'Compliant pool fencing installed and certified to the required safety standard.'],
+          ['Repairs', 'Storm damage, rot, and general wear — fixed fast so your property stays secure.']
+        ]
+      }
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var name = params.get('name') || 'Your Business';
+    var suburb = params.get('suburb') || 'Brisbane';
+    var state = params.get('state') || 'QLD';
+    var phone = params.get('phone') || '';
+    var reviews = params.get('reviews') || '';
+    var tradeKey = (params.get('trade') || 'builder').toLowerCase();
+    var trade = TRADES[tradeKey] || TRADES.builder;
+    var serviceAreas = suburb + ' & surrounding suburbs';
+    var phoneDisplay = phone || 'Enquire Now';
+
+    function splitTwoLine(n) {
+      var words = n.trim().split(/\s+/);
+      if (words.length === 1) return { top: words[0], btm: '' };
+      return { top: words[0], btm: words.slice(1).join(' ') };
+    }
+    var logoParts = splitTwoLine(name);
+
+    document.querySelectorAll('.nav-logo-top, .footer-logo-top').forEach(function (el) { el.textContent = logoParts.top; });
+    document.querySelectorAll('.nav-logo-btm, .footer-logo-btm').forEach(function (el) { el.textContent = logoParts.btm; });
+
+    // Reviews stat: fill with the real count, or drop the tile if we don't have one
+    var reviewsFilled = false;
+    document.querySelectorAll('.stat-num[data-target="[REVIEWS]"]').forEach(function (el) {
+      if (reviews) {
+        el.setAttribute('data-target', reviews);
+        reviewsFilled = true;
+      } else {
+        var cell = el.closest('.stat');
+        if (cell) cell.remove();
+      }
+    });
+    if (!reviewsFilled) {
+      var grid = document.querySelector('.stats-grid');
+      if (grid) grid.classList.add('no-reviews');
+    }
+
+    // Per-trade service card descriptions (not simple tokens — indexed by data-svc-desc)
+    document.querySelectorAll('[data-svc-desc]').forEach(function (el) {
+      var i = parseInt(el.getAttribute('data-svc-desc'), 10) - 1;
+      if (trade.services[i]) el.textContent = trade.services[i][1];
+    });
+
+    function applyText(str) {
+      str = str
+        .split('Call [PHONE NUMBER]').join(phone ? 'Call ' + phone : 'Get a Free Quote')
+        .split('[PHONE NUMBER]').join(phoneDisplay)
+        .split('[COMPANY NAME]').join(name)
+        .split('[TAGLINE LINE 1]').join(trade.tagline[0])
+        .split('[TAGLINE LINE 2]').join(trade.tagline[1])
+        .split('[TAGLINE LINE 3]').join(trade.tagline[2])
+        .split('[TRADE]').join(trade.label)
+        .split('[SUBURB] & [SERVICE AREAS]').join(serviceAreas) // avoid "Suburb & Suburb & surrounding suburbs"
+        .split('[SERVICE AREAS]').join(serviceAreas)
+        .split('[SUBURB]').join(suburb)
+        .split('[STATE]').join(state);
+      for (var i = 0; i < 5; i++) {
+        str = str.split('[SERVICE ' + (i + 1) + ']').join(trade.services[i][0]);
+      }
+      return str;
+    }
+
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.parentNode && node.parentNode.tagName === 'SCRIPT') continue;
+      if (node.nodeValue.indexOf('[') === -1) continue;
+      node.nodeValue = applyText(node.nodeValue);
+    }
+
+    document.querySelectorAll('a[href*="[PHONE NUMBER]"]').forEach(function (a) {
+      a.setAttribute('href', phone ? 'tel:' + phone.replace(/[^\d+]/g, '') : '#contact');
+    });
+
+    document.title = applyText(document.title);
+    document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"]').forEach(function (m) {
+      m.setAttribute('content', applyText(m.getAttribute('content')));
+    });
+  })();
+  </script>
 
   <script>
   (function () {
